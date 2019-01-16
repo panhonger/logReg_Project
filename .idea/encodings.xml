@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="GBK">
+    <file url="file://$PROJECT_DIR$/app/project/models/socket_model.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/project/models/test_model.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/project/routers/socket_route.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/project/routers/test_route.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/project/services/socket_service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/project/services/test_service.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bin/www.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/index.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/project/findPwd.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/project/home.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/project/login.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/project/register.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/project_bz/login-bz.hbs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/app/test/envetEmitter.js" charset="UTF-8" />
+    <file url="PROJECT" charset="GBK" />
+  </component>
+</project>

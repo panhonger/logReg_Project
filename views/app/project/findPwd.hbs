@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" href="/static/css/new_log.css">
+    <!--Basic Styles-->
+
+    <script type="text/javascript" src="/static/js/bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/easyui/css/easyui.css">
+    <script src="/static/common/md5.js"></script>
+    <script src="/static/common/security.mini.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+
+    <style>
+        *{ margin:0; padding:0; list-style:none}
+        body{ background:#EBECED; font-family:'微软雅黑';background-size: cover;}
+        .form{width: 380px;height: auto; margin:40px auto; overflow:hidden;font-size: 16px;color: #1b1b1b;text-align: left; padding:10px; border-radius:10px;}
+        .form div{padding:5px 0;overflow: hidden;}
+        .form label{width: 40px;display: block;float: left;}
+        .form .infos{width:200px;height: 26px;line-height: 26px;border:1px solid #BFBFBF;padding:2px;border-radius:4px;float: left;}
+        .form .div-phone a.send1{height: 26px;text-decoration:none;line-height: 26px;padding:2px;width: 80px;background: #AA8926;font-family: '宋体';color: #fff;font-size: 12px;text-align: center;display: block;float: left;border-radius:2px;margin-left:2px;-webkit-transition:all 0.2s linear;-moz-transition:all 0.2s linear;-ms-transition:all 0.2s linear;-o-transition:all 0.2s linear;transition:all 0.2s linear;}
+        .form .div-phone a.send1:hover{text-decoration: none;background: #866c1b;-webkit-transition:all 0.2s linear;-moz-transition:all 0.2s linear;-ms-transition:all 0.2s linear;-o-transition:all 0.2s linear;transition:all 0.2s linear;}
+        .form .div-phone a.send0{height: 26px;text-decoration:none;line-height: 26px;padding:2px;width: 80px;background: #A1A1A1;font-family: '宋体';color: #fff;font-size: 12px;text-align: center;display: block;float: left;border-radius:2px;margin-left:2px;}
+        .form .div-phone a.send0:hover{background: #A1A1A1;font-family: '宋体';color: #fff;font-size: 12px;text-decoration: none;}
+        .form span.error{height: 26px;line-height: 26px;padding:2px;width: 100px;color: red;padding-left:20px;display: block;float: left;margin-left:10px;font-size: 12px;font-family: '宋体';background: url(../images/error.png) no-repeat left center;}
+        .form #phone{width: 116px;}
+        .form .div-conform{padding-right:153px;}
+        .form .div-conform a.conform{width: 136px;height: 34px;display: block;text-align: left;overflow: hidden;}
+
+        input#rightcode{
+            font-family: Arial;
+            font-style: italic;
+            color: red;
+            padding: 2px 3px;
+            letter-spacing: 2px;
+            font-weight: bolder;
+        }
+
+    </style>
+</head>
+
+<body style="background-image: url('/images/findPwdBg.gif')">
+
+<div class="login-box">
+    <div class="logo">
+        <div style="border-bottom:1px solid #5bc0de;padding:50px 0 0;box-shadow: 0 1px #5bc0de;font-size: 18px;padding-left: 10px">手机验证</div>
+        <div class="form">
+            <div class="div-phone" style="padding: 0 0 30px 0">
+                <label for="phone" style="padding: 5px 0 0px 0">手机号</label>
+                <input type="text" id="phone" class="infos" placeholder="请输入手机号码" style="width: 156px;margin-left: 20px;margin-right: 5px"/>
+                <!--<input type="button" class="obtain generate_code" value=" 获取验证码" onclick="settime(this);" style="width: 80px;height: 24px;">-->
+            </div>
+            <div class="div-ranks" style="padding: 10px 0 30px 0">
+                <label for="ranks" style="padding: 5px 0 0 0">验证码</label>
+                <input type="text" id="ranks" class="infos" placeholder="请输入验证码" style="width: 156px;margin-left: 20px;margin-right: 5px"/>
+                <input type="button" class="obtain generate_code" id="rightcode" onclick="createNewCode();" style="width: 80px;height: 24px">
+            </div>
+            <div class="div-conform">
+                <div class="col-sm-2 col-sm-offset-5"></div>
+                <button onclick="submitCode()" style="width: 50px;height: 26px" >下一步</button>
+            </div>
+        </div>
+    </div>
+    <div class="login">
+        <div style="border-bottom:1px solid #009208;padding:50px 0 0;box-shadow: 0 1px #009208;font-size: 18px;padding-left: 10px">您可以选择其它操作</div>
+       <div style="padding-left: 60px;padding-top: 40px">
+           <input type="button" id="log" value="登陆" style="background-color: pink;width: 160px;height: 34px;font-size: 16px"
+                  onclick="location.href='/mainPage/toLogPage'"/>
+       </div>
+        <div style="padding-left: 60px;padding-top: 30px">
+            <input type="button" id="reg" value="注册" style="background-color: pink;width: 160px;height: 34px;font-size: 16px"
+                   onclick="location.href='/mainPage/toRegPage'"/>
+        </div>
+        <div style="padding-left: 60px;padding-top: 30px">
+            <input type="button" id="email_find" value="邮箱验证" style="background-color: pink;width: 160px;height: 34px;font-size: 16px"
+                   onclick="location.href='/mainPage/toFindPwdByEmail'">
+        </div>
+    </div>
+</div>
+
+<script>
+   /* var countdown=60;//短信倒计时时间
+    function settime(val) {
+
+        let phone = $('#phone').val();
+
+        if(!phone) {
+            $("#phone").css("border", "1px solid red");
+            $('#phone').tooltip({
+                position: 'right',
+                content: '<span style="color:#FF0000">请输入手机号码</span>',
+                onShow: function () {
+                    $(this).tooltip('tip').css({
+                        backgroundColor: '#666',
+                        borderColor: '#666'
+                    });
+                }
+            });
+        }else {
+            $("#phone").css("border", "1px solid silver");
+            let format = /^1[34578]\d{9}$/;
+            if (!(format.test(phone))) {
+                $("#phone").css("border", "1px solid red");
+                $('#phone').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#FF0000">电话号码格式不正确</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }else {
+                $("#phone").css("border", "1px solid silver");
+                if (countdown == 0) {
+                    val.removeAttribute("disabled");
+                    val.value="获取验证码";
+                    countdown = 60;
+                    return false;
+                } else {
+                    val.setAttribute("disabled", true);
+                    val.value="重新发送(" + countdown + ")";
+                    countdown--;
+                }
+                setTimeout(function() {
+                    settime(val);
+                },1000);
+            }
+        }
+    }*/
+    
+    //提交验证
+    function submitCode() {
+        let phone = $('#phone').val();
+        let ranks = $('#ranks').val();
+        let query_result = checkPhone(phone);
+        if(!phone){
+            $("#phone").css("border", "1px solid red");
+            $('#phone').tooltip({
+                position: 'right',
+                content: '<span style="color:#FF0000">请输入手机号码</span>',
+                onShow: function () {
+                    $(this).tooltip('tip').css({
+                        backgroundColor: '#666',
+                        borderColor: '#666'
+                    });
+                }
+            });
+        }else {
+            $("#phone").css("border", "1px solid silver");
+            let format = /^1[34578]\d{9}$/;
+            if (!(format.test(phone))) {
+                $("#phone").css("border", "1px solid red");
+                $('#phone').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#FF0000">电话号码格式不正确</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }else {
+                if(query_result.length > 0){
+                    let phone_result = query_result[0].phone;
+                    if(phone != phone_result){
+                        $("#phone").css("border", "1px solid red");
+                        $('#phone').tooltip({
+                            position: 'right',
+                            content: '<span style="color:#FF0000">该手机号未注册</span>',
+                            onShow: function () {
+                                $(this).tooltip('tip').css({
+                                    backgroundColor: '#666',
+                                    borderColor: '#666'
+                                });
+                            }
+                        });
+                    }
+                    else {
+                        $("#phone").css("border", "1px solid silver");
+                        if(!ranks){
+                            $("#ranks").css("border", "1px solid red");
+                            $('#ranks').tooltip({
+                                position: 'right',
+                                content: '<span style="color:#FF0000">验证码不能为空</span>',
+                                onShow: function () {
+                                    $(this).tooltip('tip').css({
+                                        backgroundColor: '#666',
+                                        borderColor: '#666'
+                                    });
+                                }
+                            });
+                        }
+                        else {
+                            $("#ranks").css("border", "1px solid silver");
+                            alert(validate())
+                            if(validate()){
+                                alert("验证成功！");
+                                location.href = '/mainPage/toFindPwdByPhone?phone='+phone;
+                            }else {
+                                $("#ranks").css("border", "1px solid red");
+                                $('#ranks').tooltip({
+                                    position: 'right',
+                                    content: '<span style="color:#FF0000">验证失败</span>',
+                                    onShow: function () {
+                                        $(this).tooltip('tip').css({
+                                            backgroundColor: '#666',
+                                            borderColor: '#666'
+                                        });
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }else {
+                    $("#phone").css("border", "1px solid red");
+                    $('#phone').tooltip({
+                        position: 'right',
+                        content: '<span style="color:#FF0000">该手机号未注册</span>',
+                        onShow: function () {
+                            $(this).tooltip('tip').css({
+                                backgroundColor: '#666',
+                                borderColor: '#666'
+                            });
+                        }
+                    });
+                }
+            }
+
+        }
+    }
+
+   let str;
+   let createNewCode = function () {
+       let arr = ['0','1','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+       str = "";
+       let strlength = 4;
+       for(let i = 0; i < strlength; i++)
+       {
+           let num = Math.floor(Math.random()*arr.length);
+           str+= arr[num];
+       }
+       let btn = document.getElementById("rightcode");
+       btn.value = str;
+   };
+   window.onload = createNewCode;
+   function validate() {
+       let yan = document.getElementById('ranks');
+       if(yan.value.toLowerCase() == str.toLowerCase()){
+           return true;
+       }
+       else{
+           return false;
+       }
+   }
+
+   function checkPhone(phone) {
+       let result = null;
+       $.ajax({
+           async: false,//一定要是非异步定
+           url: '/mainPage/toQueryPhone',
+           type: 'get',
+           data:{phone:phone},
+           success: function (json) {
+               if (json.success) {
+                   result = json.data;
+               }
+           }
+       });
+       //alert(JSON.stringify(result))
+       return result;
+   }
+</script>
+</body>
+
+</html>
+
+
+

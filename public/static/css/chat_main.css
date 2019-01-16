@@ -1,0 +1,137 @@
+body,html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;/*溢出时内容会被修剪，并且其余内容是不可见的*/
+    background-size:contain;/*把图像图像扩展至最大尺寸，以使其宽度和高度完全适应内容区域。*/
+}
+#bg-pic img{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#main-panel{
+    width: 95%;
+    height: 95%;
+    margin-left: 10px;
+}
+#main-panel .main-inner{
+    width: 95%;
+    height: 95%;
+    /*background: rgba(255, 218, 185,.3);*/
+    margin-left: 10px;
+    z-index: 1000;/*属性设置元素的堆叠顺序*/
+}
+#main-panel .panel-left{
+    width: 300px;
+    height: 95%;
+    position: absolute;
+    float: left;
+    background-color: rgba(0, 255, 0,.5);
+}
+#main-panel .panel-left .header{
+    padding: 1px;
+    width: 298px;
+    height: 70px;
+}
+#main-panel .header .avatar{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+}
+#main-panel .header .avatar img{
+    width: 60px;
+    height: 60px;
+    padding: 3px;
+    border-radius: 2px;/*向 div 元素添加圆角边框：*/
+    cursor: pointer;/*属性规定要显示的光标的类型（形状）。*/
+}
+#main-panel .header .info{
+    width: 228px;
+    height: 70px;
+    position: absolute;
+    margin-left: 70px;
+}
+#main-panel .header .info .nickname {
+    width: 150px;
+    height: 35px;
+    padding-left: 10px;
+    padding-top: 30px;
+    position: absolute;
+    text-decoration: underline;
+    color: white;
+}
+#main-panel .header .info .btn-group {
+    width: 30px;
+    height: 35px;
+    padding-left: 185px;
+    padding-top: 30px;
+    position: absolute;
+}
+
+#main-panel .header .info .header-nav{
+    display: inline-block;
+    /*vertical-align: ;*//*把此元素放置在父元素的中部*/
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin:28px 30px 0 0;
+    background:url("../../images/img/index_z.png") no-repeat -434px -398px;
+}
+#main-panel .info .dropdown-menu{
+    position: absolute;
+    top:40px;
+    left:30px;
+    background:#fff;
+    width:180px;
+    min-height:100px;
+    border-radius: 5px;
+    padding-bottom:5px;
+    overflow: hidden;
+    z-index: 1003;
+    display: none;
+}
+/*#main-panel .info .dropdown-menu.show{
+    display: block;
+}
+#main-panel .dropdown-menu a{
+    color: #000;
+    font-size: 14px;
+    padding: 8px;
+    border-bottom: 1px solid #f1f1f1;
+    text-align: left;
+}
+#main-panel i,#chat-pop i{
+    background: url("../../images/img/index_z.png");
+}
+#main-panel .dropdown-menu li i{
+    display: inline-block;
+    vertical-align: middle;!*把此元素放置在父元素的中部*!
+    width: 34px;
+    height: 34px;
+    margin-right: 8px;
+}
+#main-panel .dropdown-menu .chat i{
+    background-position: -238px -398px;
+}
+#main-panel .dropdown-menu .voice i{
+    background-position: -69px -399px;
+}
+#main-panel .dropdown-menu .voice.isPlay i{
+    background-position: -39px -399px;
+}
+#main-panel .dropdown-menu .option i{
+    background-position: -306px -398px;
+}
+#main-panel .dropdown-menu .exit i{
+    background-position: -102px -398px;
+}
+#main-panel .dropdown-menu a:hover{
+    background: #F5F5F5;
+}*/
+

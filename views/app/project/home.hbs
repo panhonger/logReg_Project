@@ -1,0 +1,58 @@
+
+<link rel="stylesheet" href="/static/css/chat_main.css"/>
+<script src="/socket.io/socket.io.js"></script>
+<body id="blank">
+<!--背景图片-->
+<div id="bg-pic">
+    <img src="/images/bg_pic.gif" style="opacity:0.5">
+</div>
+<div id="main-panel">
+    <div class="main-inner">
+        <!--左边面板-->
+        <div class="panel-left">
+            <div class="header float-clear">
+                <div class="avatar">
+                    <img src="/images/protrait.jpg">
+                </div>
+                <div class="info">
+                    <div class="nickname">{{users}}</div>
+                    <a href="javascript:;" class="header-nav"></a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li>
+                                <a href="javascript:;" class="chat">
+                                    <i class="chat"></i>
+                                    发起群聊
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="option">
+                                    <i ></i>
+                                    意见反馈
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="voice">
+                                    <i ></i>
+                                    关闭声音
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;"  class="exit">
+                                    <i></i>
+                                    退出程序
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--右边面板-->
+        <div class="panel-right">
+
+        </div>
+    </div>
+</div>
+
+</body>

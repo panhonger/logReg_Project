@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <script type="text/javascript" src="/static/js/bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/easyui/css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+
+    <style type="text/css">
+        .m15 {
+            margin: 15px;
+        }
+
+        .tc {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        #indexForm {
+            width: 380px;
+            margin: 0 auto;/*设置对象上下间距为0，左右自动*/
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            margin: -150px 0px 0px -200px;
+        }
+
+        /*设置密码的可见性*/
+        @font-face {
+            font-family: 'iconfont';
+            src: url('//at.alicdn.com/t/font_674189_dvawifegwrj.eot');
+            src: url('//at.alicdn.com/t/font_674189_dvawifegwrj.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.woff') format('woff'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.svg#iconfont') format('svg');
+        }
+
+        .bui-input {
+            box-sizing: border-box;
+            height: 34px;
+            padding: 8px 10px;
+            line-height: 24px;
+            border: 1px solid #DDDDDD;
+            color: #5F5F5F;
+            font-size: 14px;
+            vertical-align: middle;
+            border-radius: 4px;
+            width: 260px;
+        }
+
+        .bui-input:hover {
+            border: 1px #659aea solid;
+        }
+
+        .bui-input:focus {
+            outline: none;
+            border: 1px solid #4F9FE9;
+            box-shadow: 0 0 3px 0 #2171BB;
+            color: #595959;
+        }
+
+        .password-wrap {
+            position: relative;
+            width: 260px;
+        }
+
+        .password-wrap .bt-showpwd {
+            color: #999999;
+            position: absolute;
+            top: 8px;
+            right: 2px;
+            line-height: 24px;
+            width: 8px;
+            height: 24px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .password-wrap .bt-showpwd.off::before {
+            content: "\e60a";
+            font-family: "iconfont";
+            font-size: 18px;
+        }
+
+        .password-wrap .bt-showpwd.on::before {
+            content: "\e60b";
+            font-family: "iconfont";
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body screen_capture_injected="true">
+<div class="box" style="background: url('/images/timg4.gif') no-repeat bottom center; background-size: 100% 100%;">
+    <div class="container" style="height: 530px">
+        <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" id="indexForm">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p class="tc">请先登录</p>
+                </div>
+                <div class="panel-body m15">
+                    <div class="form-group">
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user" style="margin-left: 5px"></span>
+                        </span>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="请输入用户名" title="用户名不能为空">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock" style="margin-left: 5px"></span>
+                                    </span>
+                            <div class="password-wrap">
+                                <div class="password-input">
+                                    <input type="password" name="password" id="password" value='' class="bui-input"
+                                           autocomplete="off"
+                                           placeholder="请输入密码" title="密码不能为空" maxlength="12" minlength="6"
+                                           style="width: 274px"/>
+                                </div>
+                                <i class="bt-showpwd off"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-block" onclick="login()" >登录</button>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-5 col-sm-offset-7"><!--当前div往右偏移col-sm-9，然后再占位col-sm-3-->
+                            <a href="/mainPage/toRegPage">注册</a>
+                            <a href="/mainPage/toFindPwd" style="margin-left:8px;">忘记密码</a></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //设置密码的可见性
+    $(".bt-showpwd").on("click", function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $password = $this.closest(".password-wrap");
+        var $input = $password.find('input');
+        var $inputWrap = $password.find('.password-input');
+        var newinput = '', inputHTML = $inputWrap.html(), inputValue = $input.val();
+        if ($input.attr('type') === 'password') {
+            newinput = inputHTML.replace(/type\s*=\s*('|")?password('|")?/ig, 'type="text"');
+            $inputWrap.html(newinput).find('input')[0].value = inputValue;
+            $this.removeClass("off").addClass("on");
+        } else {
+            newinput = inputHTML.replace(/type\s*=\s*('|")?text('|")?/ig, 'type="password"');
+            $inputWrap.html(newinput).find('input')[0].value = inputValue;
+            $this.removeClass("on").addClass("off");
+        }
+    });
+
+    function login() {
+        let username = $("#username").val();
+        let password = $("#password").val();
+
+        if (!username) {
+            $("#username").css("border", "1px solid red");
+            $('#username').tooltip({
+                position: 'right',
+                content: '<span style="color:#FF0000">请输入用户名</span>',
+                onShow: function () {
+                    $(this).tooltip('tip').css({
+                        backgroundColor: '#666',
+                        borderColor: '#666'
+                    });
+                }
+            });
+        } else {
+            $("#username").css("border", "1px solid silver");
+            if (!password) {
+                $("#password").css("border", "1px solid red");
+                $('#password').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#FF0000">请输入密码</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            } else {
+                $("#password").css("border", "1px solid silver");
+                let data = {"uname": username, "upwd": password};
+                $.ajax({
+                    url: '/mainPage/toLog',
+                    type: 'get',
+                    data: data,
+                    success: function (json) {
+                        if (json.success) {
+                            let uname = json.resp[0].username;
+                            let id = json.resp[0].id;
+                            alert(json.msg);
+                            location.href = '/mainPage/toHomePage?username='+uname+'&id='+id;
+                        }else {
+                            alert(json.msg);
+                        }
+                    },
+                    error: function () {
+                        alert("登录失败！")
+                    }
+                });
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, code, em, img, small, strong, sub, sup, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 12px;
+    font-weight: 400;
+    vertical-align: baseline;
+    background: transparent;
+}
+a {
+    text-decoration: none;
+    outline: none
+}
+a:hover {
+    text-decoration: none
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+img {
+    border: none;
+    outline: none
+}
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+input[type=button], input[type=text], input[type=password], button {
+    -webkit-appearance: none;
+    outline: none
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+body{
+    background: url("../../images/img/bg.png") no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+/*登录页*/
+.login-box{
+    width: 640px;
+    height: 350px;
+    box-shadow: 0 5px 25px rgba(6,68,87,0.8);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -220px;
+    margin-left: -320px;
+    overflow: hidden;
+}
+.logo{
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    float: left;
+    background: -moz-linear-gradient(-45deg, rgba(255, 51, 102, 0.5), rgba(255,252,153,0.5));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255, 51, 102, 0.5)), color-stop(100%,rgba(255,252,153,0.5)));
+    background: -webkit-linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255,252,153,0.5));
+    background: -o-linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255,252,153,0.5));
+    background: -ms-linear-gradient(45deg, rgba(255, 51, 102, 0.5),rgba(255,252,153,0.5));
+    background: linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255,252,153,0.5));
+}
+.logo img,.logo h1{
+    margin-left: 12%;
+    display: block;
+}
+.logo img{
+    padding-top: 40%;
+    width: 40%;
+}
+.logo h1{
+    margin-top: 10px;
+    width: 80%;
+    font-size: 18px;
+    color: #fff;
+}
+.login{
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    float: left;
+    background: -moz-linear-gradient(-45deg, rgba(255, 51, 102, 0.5), rgba(255 255 255,0.6));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(255, 51, 102, 0.5)), color-stop(100%,rgba(255 255 255,0.6)));
+    background: -webkit-linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255 255 255,0.6));
+    background: -o-linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255 255 255,0.6));
+    background: -ms-linear-gradient(45deg, rgba(255, 51, 102, 0.5),rgba(255 255 255,0.6));
+    background: linear-gradient(-45deg, rgba(255, 51, 102, 0.5),rgba(255 255 255,0.6));
+}
+
+/*根据手机号找回密码*/
+
+
+/*忘记密码*/
+.password-box{
+    width: 940px;
+    height: 500px;
+    box-shadow: 0 5px 25px rgba(6,68,87,0.8);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -280px;
+    margin-left: -470px;
+    overflow: hidden;
+}
+.password-logo{
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    float: left;
+    background: -moz-linear-gradient(-45deg, rgba(57,124,226,0.6), rgba(91,235,255,0.6));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(91,235,255,0.6)), color-stop(100%,rgba(57,124,226,0.6)));
+    background: -webkit-linear-gradient(-45deg, rgba(57,124,226,0.6),rgba(91,235,255,0.6));
+    background: -o-linear-gradient(-45deg, rgba(57,124,226,0.6),rgba(91,235,255,0.6));
+    background: -ms-linear-gradient(45deg, rgba(57,124,226,0.6),rgba(91,235,255,0.6));
+    background: linear-gradient(-45deg, rgba(57,124,226,0.6),rgba(91,235,255,0.6));
+}
+.password-logo img,.password-logo h1{
+    margin-left: 12%;
+    display: block;
+}
+.password-logo img{
+    padding-top: 60%;
+    width: 40%;
+}
+.password-logo h1{
+    margin-top: 10px;
+    width: 80%;
+    font-size: 18px;
+    color: #fff;
+}
+.password-login{
+    width: 640px;
+    height: 100%;
+    margin: 0;
+    text-align: left;
+    float: left;
+    background: #fff;
+}
+.part-1 .part-2 .part-3{
+    width: 100%;
+    height: 100%;
+}
+
+/*忘记密码3步骤*/
+.find-title{
+    font-size: 0;
+    width: 460px;
+    height: auto;
+    margin: 0 90px;
+    text-align: center;
+    overflow: hidden;
+}
+.find-title h1{
+    width: 100%;
+    font-size: 20px;
+    color: #444444;
+    letter-spacing: 5px;
+    margin-top: 30px;
+    line-height: 30px;
+    display: inline-block;
+}
+.step-1{
+    width: 100%;
+    margin-top: 20px;
+    height: 46px;
+    background: url("../../images/img/step-1.png") no-repeat;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    display: inline-block;
+}
+.step-2{
+    width: 100%;
+    margin-top: 20px;
+    height: 46px;
+    background: url("../../img/step-2.png") no-repeat;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    display: inline-block;
+}
+.step-3{
+    width: 100%;
+    margin-top: 20px;
+    height: 46px;
+    background: url("../../img/step-3.png") no-repeat;
+    -webkit-background-size: 100% auto;
+    background-size: 100% auto;
+    display: inline-block;
+}
+.step-name{
+    color: #444444;
+    line-height: 18px;
+    position: relative;
+}
+.step-name span:nth-child(1){
+    position: absolute;
+    left: 8px;
+}
+.step-name span:nth-child(3){
+    position: absolute;
+    right: 18px;
+}
+
+.test-info{
+    width: 320px;
+    height: 356px;
+    margin: 0 160px;
+    position: relative;
+}
+
+/*输入框*/
+.input-list{
+    height: 36px;
+    line-height: 36px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin: 15px 10%;
+    width: 80%;
+    border-bottom: 1px solid #d3d3d3;
+}
+.input-verify{
+    width: 80%;
+    margin: 15px 10%;
+}
+.test-info .input-list,.test-info .input-verify{
+    margin: 10px 10%;
+}
+.input-list:nth-child(1){
+    margin-top: 50px;
+}
+.verify{
+    width: 55%;
+    margin: 0;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #d3d3d3;
+}
+.input-list .icon,.verify .icon{
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.input-list .icon img,.verify .icon img{
+    width: 18px;
+    margin: 9px;
+}
+.input-list input.text,.verify input.text{
+    width: 80%;
+    height: 36px;
+    line-height: 36px;
+    margin-left: 40px;
+    border: none;
+    background: none;
+    color: #444;
+}
+.verify-code{
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    float: right;
+    width: 35%;
+    background: #ecf8fd;
+    border: 1px solid #cff1ff;
+    display: inline-block;
+}
+.verify-code span{
+    font-size: 14px;
+}
+.message-code{
+    color: #ffffff;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    float: right;
+    width: 35%;
+    display: inline-block;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    background: #fcb058;
+    padding: 0;
+    border: none;
+}
+.part-2 .message-dis{
+    background: #d3d3d3;
+}
+
+.login-box input::-webkit-input-placeholder {
+    font-weight: 300;
+    color:#a6a6a6;
+}
+.login-box input:-moz-placeholder {
+    font-weight: 300;
+    color:#a6a6a6;
+}
+.login-box input::-moz-placeholder {
+    font-weight: 300;
+    color:#a6a6a6;
+}
+.login-box input:-ms-input-placeholder {
+    font-weight: 300;
+    color:#a6a6a6;
+}
+.verity-btn,.next-btn{
+    width: 80%;
+    height: 36px;
+    line-height: 36px;
+    margin: 35px 10%;
+    font-size: 14px;
+    text-align: center;
+    background: #fcb058;
+    display: block;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.login-btn{
+    width: 80%;
+    height: 36px;
+    line-height: 36px;
+    margin: 22px 10%;
+    font-size: 14px;
+    text-align: center;
+    background: #fcb058;
+    display: block;
+    color: #fff;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+.tip-verify{
+    font-weight: bold;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    margin: 10px 10%;
+    margin-top: 50px;
+    width: 80%;
+    border-bottom: 1px solid #ffffff;
+    box-sizing: content-box;
+}
+
+/*忘记密码第三步重置成功*/
+.success{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+.success img{
+    width: 20%;
+    margin: 0 35%;
+    margin-top: 70px;
+    display: inline-block;
+}
+.success p{
+    font-size: 14px;
+    color: #454545;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    line-height: 30px;
+    display: inline-block;
+}
+
+/*忘记密码提示*/
+.tips{
+    color: #ec2c2c;
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    bottom:116px;
+    padding-left: 6px;
+    left: 50%;
+    width: 250px;
+    margin-left: -128px;
+    line-height: 30px;
+    display: none;
+}
+/*忘记密码提示*/
+.secondtips{
+    color: #ec2c2c;
+    font-size: 12px;
+    text-align: left;
+    position: absolute;
+    bottom:175px;
+    padding-left: 6px;
+    left: 50%;
+    width: 250px;
+    margin-left: -128px;
+    line-height: 30px;
+    display: none;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+.browser{
+    color: #fcb058;
+    text-decoration:underline
+}

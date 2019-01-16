@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/easyui/css/easyui.css">
+
+    <link rel="stylesheet" type="text/css" href="http://www.jeasyui.net/Public/js/easyui/themes/icon.css">
+    <script type="text/javascript" src="http://www.jeasyui.net/Public/js/easyui/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        .m15 {
+            margin: 15px;
+        }
+
+        .tc {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /*设置密码的可见性*/
+        @font-face {
+            font-family: 'iconfont';
+            src: url('//at.alicdn.com/t/font_674189_dvawifegwrj.eot');
+            src: url('//at.alicdn.com/t/font_674189_dvawifegwrj.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.woff') format('woff'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_674189_dvawifegwrj.svg#iconfont') format('svg');
+        }
+
+        .bui-input {
+            box-sizing: border-box;
+            height: 34px;
+            padding: 8px 10px;
+            line-height: 24px;
+            border: 1px solid #DDDDDD;
+            color: #5F5F5F;
+            font-size: 14px;
+            vertical-align: middle;
+            border-radius: 4px;
+            width: 260px;
+        }
+
+        .bui-input:hover {
+            border: 1px #659aea solid;
+        }
+
+        .bui-input:focus {
+            outline: none;
+            border: 1px solid #4F9FE9;
+            box-shadow: 0 0 3px 0 #2171BB;
+            color: #595959;
+        }
+
+        .password-wrap {
+            position: relative;
+            width: 260px;
+        }
+
+        .password-wrap .bt-showpwd {
+            color: #999999;
+            position: absolute;
+            top: 8px;
+            right: 2px;
+            line-height: 24px;
+            width: 8px;
+            height: 24px;
+            text-align: center;
+            cursor: pointer;/*规定要显示的光标的类型（形状）：光标呈现为指示链接的指针（一只手）*/
+        }
+
+        .password-wrap .bt-showpwd.off::before {
+            content: "\e60a";
+            font-family: "iconfont";
+            font-size: 18px;
+        }
+
+        .password-wrap .bt-showpwd.on::before {
+            content: "\e60b";
+            font-family: "iconfont";
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body screen_capture_injected="true">
+<div class="box" style="background: url('/images/timg3.gif') no-repeat bottom center; background-size: 100% 100%;">
+    <div class="container" style="height: 530px">
+        <form class="col-sm-offset-4 col-sm-4 form-horizontal" role="form" method="post" onsubmit="return false">
+            <fieldset>
+                <legend></legend>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <p class="tc">注册信息</p>
+                    </div>
+                    <div class="panel-body m15">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user" style="margin-left: 5px"></span>
+                                </span>
+                                <input type="text" class="form-control" id="username" name="username"
+                                       placeholder="请输入用户名" title="名字不能为空" maxlength="12" minlength="1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-pencil" style="margin-left: 5px"></span>
+                                </span>
+                                <input type="text" class="form-control" id="identify" name="identify"
+                                       placeholder="请输入身份证号码" title="身份证号不能为空">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-earphone" style="margin-left: 5px"></span>
+                                </span>
+                                <input type="text" class="form-control" id="phone" name="phone"
+                                       placeholder="请输入电话号码" title="电话号码不能为空">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-envelope" style="margin-left: 5px"></span>
+                                </span>
+                                <input type="text" class="form-control" id="email" name="email"
+                                       placeholder="请输入邮箱" title="邮箱不能为空">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-lock" style="margin-left: 5px"></span>
+                                    </span>
+                                <div class="password-wrap">
+                                    <div class="password-input">
+                                        <input type="password" name="password" id="password" value='' class="bui-input"
+                                               autocomplete="off"
+                                               placeholder="请再次输入密码" title="确认密码不能为空" maxlength="12" minlength="6"
+                                               style="width: 274px"/>
+                                    </div>
+                                    <i class="bt-showpwd off"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-lock" style="margin-left: 5px"></span>
+                                </span>
+                                <div class="password-wrap">
+                                    <div class="password-input">
+                                        <input type="password" class="bui-input" autocomplete="off" id="repassword"
+                                               name="repassword"
+                                               placeholder="请再次输入密码" title="确认密码不能为空" maxlength="12" minlength="6"
+                                               style="width: 274px"/>
+                                    </div>
+                                    <i class="bt-showpwd off"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary btn-block" onclick="register(0)">注册</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-offset-9">
+                                <a href="/mainPage/toLogPage">登录</a></div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //设置密码的可见性
+    $(".bt-showpwd").on("click", function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var $password = $this.closest(".password-wrap");
+        var $input = $password.find('input');
+        var $inputWrap = $password.find('.password-input');
+        var newinput = '', inputHTML = $inputWrap.html(), inputValue = $input.val();
+        if ($input.attr('type') === 'password') {
+            newinput = inputHTML.replace(/type\s*=\s*('|")?password('|")?/ig, 'type="text"');
+            $inputWrap.html(newinput).find('input')[0].value = inputValue;
+            $this.removeClass("off").addClass("on");
+        } else {
+            newinput = inputHTML.replace(/type\s*=\s*('|")?text('|")?/ig, 'type="password"');
+            $inputWrap.html(newinput).find('input')[0].value = inputValue;
+            $this.removeClass("on").addClass("off");
+        }
+    });
+
+    //注册
+    function register(state) {
+        let username = $("#username").val();
+        let identify = $("#identify").val();
+        let phone = $("#phone").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
+        let repassword = $("#repassword").val();
+
+        let query_result = checkInfo();
+        //alert("qq:"+JSON.stringify(query_result))
+        //设置名字格式
+        if (!username) {
+            $("#username").css("border", "1px solid red");
+        } else if (username) {
+            let format = /^(?!_)(?!.*?_$)[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+            if (!(format.test(username))) {
+                $("#username").css("border", "1px solid red");
+                $('#username').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#FF0000">用户名只能输入中文、数字、英文和下划线,不能以下划线开头和结尾</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            } else {
+                if (query_result.length == 0) {
+                    let param = {username,identify,phone,email,password,repassword,state};
+                   firstReg(param);
+                }
+                else {
+                    for (let i = 0; i < query_result.length; i++) {
+                        let resultname = query_result[i].username;
+                        let resultId = query_result[i].identify;
+                        let resultPhone = query_result[i].phone;
+                        let resultEmail = query_result[i].email;
+
+                        if (username == resultname) {
+                            $("#username").css("border", "1px solid red");
+                            $('#username').tooltip({
+                                position: 'right',
+                                content: '<span style="color:#FF0000">该用户名已注册</span>',
+                                onShow: function () {
+                                    $(this).tooltip('tip').css({
+                                        backgroundColor: '#666',
+                                        borderColor: '#666'
+                                    });
+                                }
+                            });
+                        } else {
+                            $("#username").css("border", "1px solid silver");
+                            //验证身份证号格式
+                            if (!identify) {
+                                $("#identify").css("border", "1px solid red");
+                            } else if (identify) {
+                                let format = checkId(identify);
+                                if (format === 1) {
+                                    $("#identify").css("border", "1px solid red");
+                                    $('#identify').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#FF0000">输入的身份证号不符合规定</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                }
+                                if (format === 2) {
+                                    $("#identify").css("border", "1px solid red");
+                                    $('#identify').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#fff">身份证号码前两位输入有误，非法地区</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                }
+                                if (format === 3) {
+                                    $("#identify").css("border", "1px solid red");
+                                    $('#identify').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#fff">输入的身份证号里出生日期不正确</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                }
+                                if (format === 4) {
+                                    $("#identify").css("border", "1px solid red");
+                                    $('#identify').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#fff">输入的身份证号里出生日期不对</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                }
+                                if (format === 5) {
+                                    $("#identify").css("border", "1px solid red");
+                                    $('#identify').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#fff">18位身份证的校验码不正确</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                }
+                                else if (format == true) {
+                                    if (identify == resultId) {
+                                        $('#username').tooltip({
+                                            position: 'right',
+                                            content: '<span style="color:#FF0000">该身份证号已注册</span>',
+                                            onShow: function () {
+                                                $(this).tooltip('tip').css({
+                                                    backgroundColor: '#666',
+                                                    borderColor: '#666'
+                                                });
+                                            }
+                                        });
+                                    } else {
+                                        $("#identify").css("border", "1px solid silver");
+                                        //验证手机号码格式
+                                        if (!phone) {
+                                            $("#phone").css("border", "1px solid red");
+                                        } else if (phone) {
+                                            let format = /^1[34578]\d{9}$/;
+                                            if (!(format.test(phone))) {
+                                                $("#phone").css("border", "1px solid red");
+                                                $('#phone').tooltip({
+                                                    position: 'right',
+                                                    content: '<span style="color:#FF0000">电话号码格式不正确</span>',
+                                                    onShow: function () {
+                                                        $(this).tooltip('tip').css({
+                                                            backgroundColor: '#666',
+                                                            borderColor: '#666'
+                                                        });
+                                                    }
+                                                });
+                                            } else {
+                                                if (phone == resultPhone) {
+                                                    $('#phone').tooltip({
+                                                        position: 'right',
+                                                        content: '<span style="color:#FF0000">该号码已注册</span>',
+                                                        onShow: function () {
+                                                            $(this).tooltip('tip').css({
+                                                                backgroundColor: '#666',
+                                                                borderColor: '#666'
+                                                            });
+                                                        }
+                                                    });
+                                                } else {
+                                                    $("#phone").css("border", "1px solid silver");
+                                                    //验证邮箱格式
+                                                    if (!email) {
+                                                        $("#email").css("border", "1px solid red");
+                                                    } else if (email) {
+                                                        let format = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+                                                        if (!(format.test(email))) {
+                                                            $("#email").css("border", "1px solid red");
+                                                            $('#email').tooltip({
+                                                                position: 'right',
+                                                                content: '<span style="color:#FF0000">邮箱格式不正确</span>',
+                                                                onShow: function () {
+                                                                    $(this).tooltip('tip').css({
+                                                                        backgroundColor: '#666',
+                                                                        borderColor: '#666'
+                                                                    });
+                                                                }
+                                                            });
+                                                        } else {
+                                                            if (email == resultEmail) {
+                                                                $('#email').tooltip({
+                                                                    position: 'right',
+                                                                    content: '<span style="color:#FF0000">该邮箱已注册</span>',
+                                                                    onShow: function () {
+                                                                        $(this).tooltip('tip').css({
+                                                                            backgroundColor: '#666',
+                                                                            borderColor: '#666'
+                                                                        });
+                                                                    }
+                                                                });
+                                                            } else {
+                                                                $("#email").css("border", "1px solid silver");
+                                                                //验证密码格式
+                                                                if (password.length < 6) {
+                                                                    $("#password").css("border", "1px solid red");
+                                                                    $('#password').tooltip({
+                                                                        position: 'right',
+                                                                        content: '<span style="color:#FF0000">密码长度最少为六位</span>',
+                                                                        onShow: function () {
+                                                                            $(this).tooltip('tip').css({
+                                                                                backgroundColor: '#666',
+                                                                                borderColor: '#666'
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (password !== repassword) {
+                                                                    $("#password").css("border", "1px solid red");
+                                                                    $("#repassword").css("border", "1px solid red");
+                                                                    $('#password').tooltip({
+                                                                        position: 'right',
+                                                                        content: '<span style="color:#FF0000">两次密码不一致</span>',
+                                                                        onShow: function () {
+                                                                            $(this).tooltip('tip').css({
+                                                                                backgroundColor: '#666',
+                                                                                borderColor: '#666'
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                    $('#repassword').tooltip({
+                                                                        position: 'right',
+                                                                        content: '<span style="color:#FF0000">两次密码不一致</span>',
+                                                                        onShow: function () {
+                                                                            $(this).tooltip('tip').css({
+                                                                                backgroundColor: '#666',
+                                                                                borderColor: '#666'
+                                                                            });
+                                                                        }
+                                                                    });
+                                                                } else if (password === repassword) {
+                                                                    $("#password").css("border", "1px solid silver");
+                                                                    $("#repassword").css("border", "1px solid silver");
+                                                                    let data = {
+                                                                        "username": username,
+                                                                        "identify": identify,
+                                                                        "phone": phone,
+                                                                        "email": email,
+                                                                        "password": password,
+                                                                        "repassword": repassword,
+                                                                        "state":state
+                                                                    };
+                                                                    $.ajax({
+                                                                        url: '/mainPage/toReg',
+                                                                        type: 'post',
+                                                                        data: data,
+                                                                        success: function (data) {
+                                                                            if (data.success) {
+                                                                                alert(data.msg)
+                                                                                location.href = '/mainPage/toLogPage';
+                                                                            } else {
+                                                                                alert(data.msg);
+                                                                            }
+                                                                        },
+                                                                        error: function () {
+                                                                            alert("注册失败！")
+                                                                            //location.href = 'register';
+                                                                        }
+                                                                    });
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //身份证号的输入格式
+    function checkId(num) {
+        let vcity = {
+            11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古",
+            21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏",
+            33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南",
+            42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆",
+            51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃",
+            63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外"
+        };
+
+        num = num.toUpperCase();
+        //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。  
+        let format = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (!(format.test(num))) {
+            return 1;
+        }
+        //校验身份证的前两位是否合法
+        if (vcity[parseInt(num.substr(0, 2))] == null) {
+            return 2;
+        }
+        //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+        //下面分别分析出生日期和校验位
+        let len, re;
+        len = num.length;
+        if (len == 15) {
+            re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
+            let arrSplit = num.match(re);
+
+            //检查生日日期是否正确
+            let dtmBirth = new Date('19' + arrSplit[2] + '/' + arrSplit[3] + '/' + arrSplit[4]);
+            let bGoodDay;
+            bGoodDay = (dtmBirth.getYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+            if (!bGoodDay) {
+                return 3;
+            }
+            else {
+                //将15位身份证转成18位
+                //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+                let arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+                let arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+                let nTemp = 0, i;
+                num = num.substr(0, 6) + '19' + num.substr(6, num.length - 6);
+                for (i = 0; i < 17; i++) {
+                    nTemp += num.substr(i, 1) * arrInt[i];
+                }
+                num += arrCh[nTemp % 11];
+                return num;
+            }
+        }
+        if (len == 18) {
+            re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+            let arrSplit = num.match(re);
+
+            //检查生日日期是否正确
+            let dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
+            let bGoodDay;
+            bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[3])) && (dtmBirth.getDate() == Number(arrSplit[4]));
+            if (!bGoodDay) {
+                return 4;
+            }
+            else {
+                //检验18位身份证的校验码是否正确。
+                //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+                let valnum;
+                let arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+                let arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+                let nTemp = 0, i;
+                for (i = 0; i < 17; i++) {
+                    nTemp += num.substr(i, 1) * arrInt[i];
+                }
+                valnum = arrCh[nTemp % 11];
+                if (valnum != num.substr(17, 1)) {
+                    return 5;
+                }
+                return true;
+            }
+        }
+    }
+
+    //查询重名信息
+    function checkInfo() {
+        let result = null;
+        $.ajax({
+            async: false,//一定要是非异步定
+            url: '/mainPage/toQueryInfo',
+            type: 'get',
+            success: function (json) {
+                if (json.success) {
+                    result = json.data;
+                }
+            }
+        });
+        return result;
+    }
+
+    //首次注册
+    function firstReg(param){
+        let username = param.username;
+        let identify = param.identify;
+        let phone = param.phone;
+        let email = param.email;
+        let password = param.password;
+        let repassword = param.repassword;
+        let state = param.state;
+
+        $("#username").css("border", "1px solid silver");
+        //验证身份证号格式
+        if (!identify) {
+            $("#identify").css("border", "1px solid red");
+        } else if (identify) {
+            let format = checkId(identify);
+            if (format === 1) {
+                $("#identify").css("border", "1px solid red");
+                $('#identify').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#FF0000">输入的身份证号不符合规定</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }
+            if (format === 2) {
+                $("#identify").css("border", "1px solid red");
+                $('#identify').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#fff">身份证号码前两位输入有误，非法地区</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }
+            if (format === 3) {
+                $("#identify").css("border", "1px solid red");
+                $('#identify').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#fff">输入的身份证号里出生日期不正确</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }
+            if (format === 4) {
+                $("#identify").css("border", "1px solid red");
+                $('#identify').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#fff">输入的身份证号里出生日期不对</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }
+            if (format === 5) {
+                $("#identify").css("border", "1px solid red");
+                $('#identify').tooltip({
+                    position: 'right',
+                    content: '<span style="color:#fff">18位身份证的校验码不正确</span>',
+                    onShow: function () {
+                        $(this).tooltip('tip').css({
+                            backgroundColor: '#666',
+                            borderColor: '#666'
+                        });
+                    }
+                });
+            }
+            else if (format == true) {
+                $("#identify").css("border", "1px solid silver");
+                //验证手机号码格式
+                if (!phone) {
+                    $("#phone").css("border", "1px solid red");
+                } else if (phone) {
+                    let format = /^1[34578]\d{9}$/;
+                    if (!(format.test(phone))) {
+                        $("#phone").css("border", "1px solid red");
+                        $('#phone').tooltip({
+                            position: 'right',
+                            content: '<span style="color:#FF0000">电话号码格式不正确</span>',
+                            onShow: function () {
+                                $(this).tooltip('tip').css({
+                                    backgroundColor: '#666',
+                                    borderColor: '#666'
+                                });
+                            }
+                        });
+                    } else {
+                        $("#phone").css("border", "1px solid silver");
+                        //验证邮箱格式
+                        if (!email) {
+                            $("#email").css("border", "1px solid red");
+                        } else if (email) {
+                            let format = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+                            if (!(format.test(email))) {
+                                $("#email").css("border", "1px solid red");
+                                $('#email').tooltip({
+                                    position: 'right',
+                                    content: '<span style="color:#FF0000">邮箱格式不正确</span>',
+                                    onShow: function () {
+                                        $(this).tooltip('tip').css({
+                                            backgroundColor: '#666',
+                                            borderColor: '#666'
+                                        });
+                                    }
+                                });
+                            } else {
+                                $("#email").css("border", "1px solid silver");
+                                //验证密码格式
+                                if (password.length < 6) {
+                                    $("#password").css("border", "1px solid red");
+                                    $('#password').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#FF0000">密码长度最少为六位</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                } else if (password !== repassword) {
+                                    $("#password").css("border", "1px solid red");
+                                    $("#repassword").css("border", "1px solid red");
+                                    $('#password').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#FF0000">两次密码不一致</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                    $('#repassword').tooltip({
+                                        position: 'right',
+                                        content: '<span style="color:#FF0000">两次密码不一致</span>',
+                                        onShow: function () {
+                                            $(this).tooltip('tip').css({
+                                                backgroundColor: '#666',
+                                                borderColor: '#666'
+                                            });
+                                        }
+                                    });
+                                } else if (password === repassword) {
+                                    $("#password").css("border", "1px solid silver");
+                                    $("#repassword").css("border", "1px solid silver");
+                                    let data = {
+                                        "username": username,
+                                        "identify": identify,
+                                        "phone": phone,
+                                        "email": email,
+                                        "password": password,
+                                        "repassword": repassword,
+                                        "state":state
+                                    };
+                                    $.ajax({
+                                        url: '/mainPage/toReg',
+                                        type: 'post',
+                                        data: data,
+                                        success: function (data) {
+
+                                            if (data.success) {
+                                                alert(data.msg);
+                                                location.href = '/mainPage/toLogPage';
+                                            } else {
+                                                alert(data.msg);
+                                            }
+                                        },
+                                        error: function () {
+                                            alert("注册失败！")
+                                            //location.href = 'register';
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
+
